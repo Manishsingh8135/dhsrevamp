@@ -2,88 +2,89 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const WhyChooseUs = () => {
-  const [activeSection, setActiveSection] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const reasons = [
     {
-      title: "Expertise",
-      description: "With over 20 years of experience, our team of skilled professionals brings unparalleled knowledge to every project.",
-      image: "/assets/hero/hero1.jpg" // Replace with actual image path
+      title: "Unparalleled Expertise",
+      description: "With over two decades of experience, our team of skilled professionals brings a wealth of knowledge to every project, ensuring exceptional results.",
+      image: "/assets/kitchen/kitchen1.jpeg",
+      icon: "🏆"
     },
     {
-      title: "Quality",
-      description: "We use only the finest materials and cutting-edge techniques to ensure your home renovation exceeds expectations.",
-      image: "/assets/hero/hero1.jpg" // Replace with actual image path
+      title: "Premium Quality",
+      description: "We source only the finest materials and employ cutting-edge techniques, guaranteeing that your home renovation not only meets but exceeds your expectations.",
+      image: "/assets/interiors/interior2.jpg",
+      icon: "✨"
     },
     {
-      title: "Customer-Centric",
-      description: "Your vision is our priority. We work closely with you at every step to bring your dream home to life.",
-      image: "/assets/hero/hero1.jpg" // Replace with actual image path
+      title: "Customer-Centric Approach",
+      description: "Your vision is our mission. We collaborate closely with you throughout the process, ensuring that every detail aligns perfectly with your dream home aspirations.",
+      image: "/assets/exteriors/exterior2.jpg",
+      icon: "🤝"
     },
     {
-      title: "Reliability",
-      description: "Count on us for timely project completion and transparent communication throughout the process.",
-      image: "/assets/hero/hero1.jpg" // Replace with actual image path
+      title: "Unwavering Reliability",
+      description: "Count on us for timely project completion, transparent communication, and a commitment to excellence that sets us apart in the industry.",
+      image: "/assets/interiors/interior3.jpg",
+      icon: "🕰️"
     }
   ];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const newActiveSection = Math.round(window.scrollY / window.innerHeight);
-      setActiveSection(newActiveSection);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <section className="bg-gray-900 text-white">
-      {reasons.map((reason, index) => (
-        <motion.div
-          key={index}
-          className="min-h-screen flex flex-col md:flex-row items-center justify-center p-8 md:p-16"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: activeSection === index ? 1 : 0.3 }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="w-full md:w-2/5 mb-8 md:mb-0 md:pr-8">
-            <motion.h2 
-              className="text-4xl md:text-6xl font-bold mb-6"
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+    <section className="bg-gradient-to-b from-gray-900 to-black text-white py-20">
+      <div className="container mx-auto px-4">
+        <header className="text-center mb-16">
+          <h2 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-6">
+            Why Choose DHS REVAMP?
+          </h2>
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-serif italic">
+            Discover the DHS REVAMP difference and see why we're the trusted choice for home transformations
+          </p>
+        </header>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {reasons.map((reason, index) => (
+            <motion.div
+              key={index}
+              className="relative overflow-hidden rounded-lg shadow-lg bg-gray-800 hover:shadow-2xl transition-all duration-300"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
-              {reason.title}
-            </motion.h2>
-            <motion.p 
-              className="text-xl md:text-2xl leading-relaxed"
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              {reason.description}
-            </motion.p>
-          </div>
-          <motion.div 
-            className="w-full md:w-3/5"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            <Image
-              src={reason.image}
-              alt={reason.title}
-              width={800}
-              height={600}
-              className="rounded-lg shadow-2xl"
-            />
-          </motion.div>
-        </motion.div>
-      ))}
+              <div className="absolute inset-0 bg-gradient-to-br from-purple-900 to-pink-900 opacity-80 z-0"></div>
+              <div className="relative z-10 p-8">
+                <div className="text-4xl mb-4">{reason.icon}</div>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                  {reason.title}
+                </h3>
+                <p className="text-gray-300 font-serif italic mb-6">
+                  {reason.description}
+                </p>
+                <motion.div
+                  className="absolute inset-0 z-0"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: hoveredIndex === index ? 0.2 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Image
+                    src={reason.image}
+                    alt={reason.title}
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-lg"
+                  />
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };

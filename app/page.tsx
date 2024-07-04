@@ -1,22 +1,25 @@
 import { GridBackgroundDemo } from "@/components/background/Grid-background";
+import CTASection from "@/components/cta/Cta";
 import FooterPreview from "@/components/footer/Footer";
+import { LayoutGridDemo } from "@/components/imagegallery/ImageGallery";
 import WhyChooseUs from "@/components/reason/WhyUs";
+import ServiceProcessTimeline from "@/components/service-timeline/ServiceTimeline";
 import { TabsDemo } from "@/components/tabs/TabDemo";
-import { ModeToggle } from "@/components/theme-toggle/theme-toggle";
-import { Button } from "@/components/ui/button";
-import { LampDemo } from "@/components/ui/lamp";
+import TestimonialShowcase from "@/components/testimonials/Testimonial";
 import { LampDemoMain } from "@/components/welcome/welcome";
-import Image from "next/image";
+
 
 export default function Home() {
   return (
    <div>
     <GridBackgroundDemo/>
-    <LampDemoMain/>
-    <Button>Hello</Button>
+    <LampDemoMain/>   
     <TabsDemo/>
-    <ModeToggle/>
     <WhyChooseUs/>
+    <LayoutGridDemo/>
+    <ServiceProcessTimeline/>
+    <TestimonialShowcase/>
+    <CTASection/>
     <FooterPreview/>
    </div>
   );
