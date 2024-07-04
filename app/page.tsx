@@ -20,7 +20,6 @@ export default function Home() {
     <ServiceProcessTimeline/>
     <TestimonialShowcase/>
     <CTASection/>
-    <FooterPreview/>
    </div>
   );
 }
