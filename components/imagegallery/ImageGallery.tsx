@@ -2,7 +2,7 @@
 import React from "react";
 import { LayoutGrid } from "../ui/layout-grid";
 
-export function LayoutGridDemo() {
+const LayoutGridDemo = () => {
   return (
     <div className="min-h-screen py-20 w-full bg-gradient-to-b from-gray-900 to-gray-800">
       <header className="text-center mb-16">
@@ -16,15 +16,14 @@ export function LayoutGridDemo() {
       <LayoutGrid cards={cards} />
     </div>
   );
-}
-
+};
 
 const SkeletonOne = () => {
   return (
     <div>
       <p className="font-bold text-4xl text-white">Modern Kitchen Elegance</p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Experience culinary perfection in this sleek, modern kitchen. With state-of-the-art appliances and a minimalist design, it's the perfect space for both gourmet cooking and casual dining.
+        Experience culinary perfection in this sleek, modern kitchen. With state-of-the-art appliances and a minimalist design, it&apos;s the perfect space for both gourmet cooking and casual dining.
       </p>
     </div>
   );
@@ -35,7 +34,7 @@ const SkeletonTwo = () => {
     <div>
       <p className="font-bold text-4xl text-white">Luxurious Bathroom Retreat</p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Transform your daily routine into a spa-like experience with this opulent bathroom. Featuring a freestanding tub, walk-in shower, and high-end fixtures, it's the ultimate relaxation zone.
+        Transform your daily routine into a spa-like experience with this opulent bathroom. Featuring a freestanding tub, walk-in shower, and high-end fixtures, it&apos;s the ultimate relaxation zone.
       </p>
     </div>
   );
@@ -46,7 +45,7 @@ const SkeletonThree = () => {
     <div>
       <p className="font-bold text-4xl text-white">Cozy Living Room Haven</p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Create lasting memories in this warm and inviting living room. With comfortable seating, a fireplace, and plenty of natural light, it's the perfect space for family gatherings and quiet evenings alike.
+        Create lasting memories in this warm and inviting living room. With comfortable seating, a fireplace, and plenty of natural light, it&apos;s the perfect space for family gatherings and quiet evenings alike.
       </p>
     </div>
   );
@@ -57,7 +56,7 @@ const SkeletonFour = () => {
     <div>
       <p className="font-bold text-4xl text-white">Stunning Exterior Makeover</p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Enhance your home's curb appeal with our expert exterior renovations. From modern facades to traditional charm, we'll transform your house into the envy of the neighborhood.
+        Enhance your home&apos;s curb appeal with our expert exterior renovations. From modern facades to traditional charm, we&apos;ll transform your house into the envy of the neighborhood.
       </p>
     </div>
   );

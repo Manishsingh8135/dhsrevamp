@@ -33,7 +33,7 @@ const CTASection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Let's bring your vision to life. Contact us today for a free consultation.
+          Let&apos;s bring your vision to life. Contact us today for a free consultation.
         </motion.p>
         <motion.button
           className="bg-gradient-to-r from-purple-500 to-pink-500 text-white text-lg font-semibold py-3 px-8 rounded-full hover:from-purple-600 hover:to-pink-600 transition duration-300"

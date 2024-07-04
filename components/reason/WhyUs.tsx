@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 const WhyChooseUs = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const reasons = [
     {
@@ -42,7 +42,7 @@ const WhyChooseUs = () => {
             Why Choose DHS REVAMP?
           </h2>
           <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-serif italic">
-            Discover the DHS REVAMP difference and see why we're the trusted choice for home transformations
+            Discover the DHS REVAMP difference and see why we&apos;re the trusted choice for home transformations
           </p>
         </header>
 

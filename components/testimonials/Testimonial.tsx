@@ -94,7 +94,8 @@ const TestimonialShowcase = () => {
                   <p className="text-gray-400">{testimonial.role}</p>
                 </div>
               </div>
-              <p className="text-gray-300 font-serif italic leading-relaxed">"{testimonial.quote}"</p>
+              <p className="text-gray-300 font-serif italic leading-relaxed">&ldquo;{testimonial.quote}&rdquo;</p>
+            
             </motion.div>
           ))}
         </div>

@@ -12,7 +12,7 @@ const contactInfo = {
   googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=7581+Silver+St+Buena+Park+CA"
 };
 
-const ContactPage: React.FC = () => {
+const ContactPage = () => {
   return (
     <div className="bg-gradient-to-b from-gray-900 to-black min-h-screen text-gray-300">
       <Header />
@@ -27,7 +27,7 @@ const ContactPage: React.FC = () => {
   );
 };
 
-const Header: React.FC = () => (
+const Header = () => (
   <header className="py-20 text-center">
     <motion.h1 
       className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-4"
@@ -43,11 +43,10 @@ const Header: React.FC = () => (
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
     >
-      Let's bring your dream home to life. We're here to answer your questions and start your renovation journey.
+      Let&apos;s bring your dream home to life. We&apos;re here to answer your questions and start your renovation journey.
     </motion.p>
   </header>
 );
-
 interface ContactItemProps {
   icon: React.ElementType;
   content: string;
