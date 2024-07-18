@@ -5,7 +5,7 @@ const HeroText = () => {
     return(
         <div className="w-full h-full flex flex-col justify-center items-center">
             <Badge variant="outline" className="py-2 border rounded-lg px-6 bg-gradient-to-r from-purple-500 to-pink-500 font-bold text-white">Best in North America</Badge>
-            <h1 className="text-4xl sm:text-7xl font-extrabold relative z-20 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 py-8">DHS REVAMP</h1>
+            <h1 className="text-4xl font-creepster sm:text-7xl font-extrabold relative z-20 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 py-8">DHS REVAMP</h1>
             <p className="text-gray-300 text-xl sm:text-2xl font-serif italic text-center max-w-2xl">
             Transform your space with DHS REVAMP. Expert revamp services for kitchens, bedrooms, bathrooms, and more across the USA.
             </p>
