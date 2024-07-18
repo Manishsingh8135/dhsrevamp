@@ -1,19 +1,20 @@
 import { ServiceData } from "./services";
+import { FaWarehouse, FaBlender, FaClipboardCheck, FaRuler, FaMobileAlt, FaLightbulb, FaPaintRoller } from 'react-icons/fa';
 
 export const kitchenData: ServiceData = {
   id: "kitchen",
   title: "Kitchen Remodeling",
   description: "Transform your kitchen into a stunning, functional space that reflects your style and meets your needs.",
-  heroImage: "/assets/kitchen/kitchen-hero.jpg",
+  heroImage: "/assets/kitchen/kitchen1.jpeg",
   features: [
-    "Custom cabinetry and storage solutions",
-    "High-end appliance installation",
-    "Bespoke countertops and backsplashes",
-    "Efficient project management",
-    "Ergonomic design principles",
-    "Smart home integration",
-    "Lighting design and installation",
-    "Flooring selection and installation"
+    { text: "Custom cabinetry and storage solutions", icon: FaWarehouse },
+    { text: "High-end appliance installation", icon: FaBlender },
+    { text: "Bespoke countertops and backsplashes", icon: FaRuler },
+    { text: "Efficient project management", icon: FaClipboardCheck },
+    { text: "Ergonomic design principles", icon: FaRuler },
+    { text: "Smart home integration", icon: FaMobileAlt },
+    { text: "Lighting design and installation", icon: FaLightbulb },
+    { text: "Flooring selection and installation", icon: FaPaintRoller }
   ],
   processSteps: [
     { title: "Initial Consultation", description: "We discuss your vision, needs, and budget." },
@@ -23,12 +24,12 @@ export const kitchenData: ServiceData = {
     { title: "Final Walkthrough", description: "Ensure every detail meets our high standards." }
   ],
   gallery: [
-    { src: "/assets/kitchen/kitchen1.jpg", alt: "Modern kitchen with island" },
+    { src: "/assets/kitchen/kitchen1.jpeg", alt: "Modern kitchen with island" },
     { src: "/assets/kitchen/kitchen2.jpg", alt: "Rustic kitchen design" },
     { src: "/assets/kitchen/kitchen3.jpg", alt: "Minimalist white kitchen" },
     { src: "/assets/kitchen/kitchen4.jpg", alt: "Luxury kitchen with marble countertops" },
-    { src: "/assets/kitchen/kitchen5.jpg", alt: "Contemporary kitchen with wood accents" },
-    { src: "/assets/kitchen/kitchen6.jpg", alt: "Open concept kitchen and dining area" }
+    // { src: "/assets/kitchen/kitchen5.jpg", alt: "Contemporary kitchen with wood accents" },
+    // { src: "/assets/kitchen/kitchen6.jpg", alt: "Open concept kitchen and dining area" }
   ],
   testimonials: [
     { name: "Sarah J.", quote: "DHS REVAMP transformed our outdated kitchen into a modern masterpiece!" },

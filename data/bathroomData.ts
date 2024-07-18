@@ -1,19 +1,20 @@
 import { ServiceData } from "./services";
+import { FaWarehouse, FaShower, FaGripVertical, FaBath, FaLightbulb, FaTemperatureHigh, FaToilet, FaWind } from 'react-icons/fa';
 
 export const bathroomData: ServiceData = {
   id: "bathroom",
   title: "Bathroom Remodeling",
   description: "Create a luxurious, spa-like retreat in your home with our expert bathroom remodeling services.",
-  heroImage: "/assets/bathroom/bathroom-hero.jpg",
+  heroImage: "/assets/bathrooms/bathroom1.jpg",
   features: [
-    "Custom vanity and cabinetry",
-    "High-end fixture installation",
-    "Tile and stonework",
-    "Shower and tub upgrades",
-    "Lighting design",
-    "Heated flooring options",
-    "Water-efficient toilet installation",
-    "Ventilation system upgrades"
+    { text: "Custom vanity and cabinetry", icon: FaWarehouse },
+    { text: "High-end fixture installation", icon: FaShower },
+    { text: "Tile and stonework", icon: FaGripVertical },
+    { text: "Shower and tub upgrades", icon: FaBath },
+    { text: "Lighting design", icon: FaLightbulb },
+    { text: "Heated flooring options", icon: FaTemperatureHigh },
+    { text: "Water-efficient toilet installation", icon: FaToilet },
+    { text: "Ventilation system upgrades", icon: FaWind }
   ],
   processSteps: [
     { title: "Initial Consultation", description: "We discuss your bathroom renovation goals and budget." },
@@ -23,12 +24,12 @@ export const bathroomData: ServiceData = {
     { title: "Final Inspection", description: "We ensure every detail is perfect before handover." }
   ],
   gallery: [
-    { src: "/assets/bathroom/bathroom1.jpg", alt: "Modern minimalist bathroom" },
-    { src: "/assets/bathroom/bathroom2.jpg", alt: "Luxury spa-inspired bathroom" },
-    { src: "/assets/bathroom/bathroom3.jpg", alt: "Contemporary bathroom with freestanding tub" },
-    { src: "/assets/bathroom/bathroom4.jpg", alt: "Sleek bathroom with double vanity" },
-    { src: "/assets/bathroom/bathroom5.jpg", alt: "Rustic bathroom with modern touches" },
-    { src: "/assets/bathroom/bathroom6.jpg", alt: "Small bathroom with smart storage solutions" }
+    { src: "/assets/bathrooms/bathroom1.jpg", alt: "Modern minimalist bathroom" },
+    { src: "/assets/bathrooms/bathroom2.jpg", alt: "Luxury spa-inspired bathroom" },
+    { src: "/assets/bathrooms/bathroom3.jpg", alt: "Contemporary bathroom with freestanding tub" },
+    { src: "/assets/bathrooms/bathroom4.jpg", alt: "Sleek bathroom with double vanity" },
+    { src: "/assets/bathrooms/bathroom5.jpg", alt: "Rustic bathroom with modern touches" },
+    { src: "/assets/bathrooms/bathroom6.jpg", alt: "Small bathroom with smart storage solutions" }
   ],
   testimonials: [
     { name: "Emma S.", quote: "Our new bathroom feels like a luxury spa. DHS REVAMP did an amazing job!" },

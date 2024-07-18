@@ -1,19 +1,20 @@
 import { ServiceData } from "./services";
+import { FaHome, FaDoorOpen, FaBoxes, FaPaintRoller, FaPalette, FaLightbulb, FaMobileAlt, FaWheelchair } from 'react-icons/fa';
 
 export const interiorData: ServiceData = {
   id: "interior",
   title: "Interior Remodeling",
   description: "Revitalize your living spaces with our expert interior remodeling services, tailored to your lifestyle and preferences.",
-  heroImage: "/assets/interior/interior-hero.jpg",
+  heroImage: "/assets/interiors/interior1.jpg",
   features: [
-    "Whole-home renovations",
-    "Open concept conversions",
-    "Custom built-ins and storage solutions",
-    "Flooring installation and refinishing",
-    "Interior painting and wallpapering",
-    "Lighting design and installation",
-    "Smart home technology integration",
-    "Accessibility modifications"
+    { text: "Whole-home renovations", icon: FaHome },
+    { text: "Open concept conversions", icon: FaDoorOpen },
+    { text: "Custom built-ins and storage solutions", icon: FaBoxes },
+    { text: "Flooring installation and refinishing", icon: FaPaintRoller },
+    { text: "Interior painting and wallpapering", icon: FaPalette },
+    { text: "Lighting design and installation", icon: FaLightbulb },
+    { text: "Smart home technology integration", icon: FaMobileAlt },
+    { text: "Accessibility modifications", icon: FaWheelchair }
   ],
   processSteps: [
     { title: "Design Consultation", description: "We discuss your vision and assess your interior spaces." },
@@ -23,12 +24,12 @@ export const interiorData: ServiceData = {
     { title: "Final Walkthrough", description: "We ensure every detail meets our high standards and your expectations." }
   ],
   gallery: [
-    { src: "/assets/interior/interior1.jpg", alt: "Modern open concept living area" },
-    { src: "/assets/interior/interior2.jpg", alt: "Elegant master bedroom suite" },
-    { src: "/assets/interior/interior3.jpg", alt: "Custom built-in home office" },
-    { src: "/assets/interior/interior4.jpg", alt: "Cozy family room with fireplace" },
-    { src: "/assets/interior/interior5.jpg", alt: "Stylish dining room renovation" },
-    { src: "/assets/interior/interior6.jpg", alt: "Luxurious walk-in closet" }
+    { src: "/assets/interiors/interior1.jpg", alt: "Modern open concept living area" },
+    { src: "/assets/interiors/interior2.jpg", alt: "Elegant master bedroom suite" },
+    { src: "/assets/interiors/interior3.jpg", alt: "Custom built-in home office" },
+    { src: "/assets/interiors/interior4.jpg", alt: "Cozy family room with fireplace" },
+    { src: "/assets/interiors/interior5.jpg", alt: "Stylish dining room renovation" },
+    { src: "/assets/interiors/interior6.jpg", alt: "Luxurious walk-in closet" }
   ],
   testimonials: [
     { name: "Rachel S.", quote: "DHS REVAMP transformed our dated interior into a modern, open concept dream home. We couldn&apos;t be happier!" },

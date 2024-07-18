@@ -1,10 +1,11 @@
 "use client"
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { ServiceData, kitchenData } from '@/data/services';
+import { ServiceData } from '@/data/services';
 import { motion, AnimatePresence } from 'framer-motion';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { FaMinus, FaPlus } from 'react-icons/fa';
+import { kitchenData } from '@/data/kitchenData';
 import { bathroomData } from '@/data/bathroomData';
 import { exteriorData } from '@/data/exteriorData';
 import { interiorData } from '@/data/interiorData';
@@ -73,58 +74,64 @@ const HeroSection = ({ data }: { data: ServiceData }) => (
   </header>
 );
 
-const KeyFeatures = ({ features }: { features: string[] }) => (
+const KeyFeatures = ({ features }: { features: ServiceData['features'] }) => {
+  return (
+    <section className="mb-20">
+      <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center font-creepster bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Key Features</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {features.map((feature, index) => (
+          <motion.div 
+            key={index} 
+            className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-lg shadow-lg relative overflow-hidden group"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="relative z-10 flex items-start">
+              <feature.icon className="text-4xl text-purple-400 mr-4 mt-1" />
+              <p className="text-lg text-gray-300">{feature.text}</p>
+            </div>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-0 group-hover:opacity-30 transition duration-300 group-hover:duration-200"></div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const ServiceIntro = ({ data }: { data: ServiceData }) => (
   <section className="mb-20">
-    <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center text-white font-creepster">Key Features</h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {features.map((feature, index) => (
-        <motion.div 
-          key={index} 
-          className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-lg shadow-lg"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3, delay: index * 0.1 }}
-        >
-          <p className="text-lg text-gray-300">{feature}</p>
-        </motion.div>
-      ))}
-    </div>
+    <motion.h2 
+      className="text-4xl md:text-5xl font-bold mb-6 text-center text-white font-creepster"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      Elevating {data.title} with Unmatched Remodeling Services
+    </motion.h2>
+    <motion.p 
+      className="text-lg text-gray-300 leading-relaxed mb-8"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+    >
+      Welcome to Revamp DHS Construction, where we redefine {data.title.toLowerCase()} spaces with our exceptional remodeling services in Los Angeles and Orange County. As a premier construction and renovation company, we take pride in transforming {data.title.toLowerCase()} into functional and aesthetically pleasing areas that reflect your lifestyle and preferences.
+    </motion.p>
+    <motion.p 
+      className="text-lg text-gray-300 leading-relaxed"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.4 }}
+    >
+      Our approach goes beyond the conventional, aiming to create {data.title.toLowerCase()} that are both stylish and highly functional. Whether you're envisioning a modern haven or a classic, timeless space, our team of experts collaborates with you to bring your dream {data.title.toLowerCase()} to life.
+    </motion.p>
   </section>
 );
 
-const ServiceIntro = ({ data }: { data: ServiceData }) => (
-    <section className="mb-20">
-      <motion.h2 
-        className="text-4xl md:text-5xl font-bold mb-6 text-center text-white font-creepster"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        Elevating {data.title} with Unmatched Remodeling Services
-      </motion.h2>
-      <motion.p 
-        className="text-lg text-gray-300 leading-relaxed mb-8"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        Welcome to Revamp DHS Construction, where we redefine {data.title.toLowerCase()} spaces with our exceptional remodeling services in Los Angeles and Orange County. As a premier construction and renovation company, we take pride in transforming {data.title.toLowerCase()} into functional and aesthetically pleasing areas that reflect your lifestyle and preferences.
-      </motion.p>
-      <motion.p 
-        className="text-lg text-gray-300 leading-relaxed"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      >
-        Our approach goes beyond the conventional, aiming to create {data.title.toLowerCase()} that are both stylish and highly functional. Whether you're envisioning a modern haven or a classic, timeless space, our team of experts collaborates with you to bring your dream {data.title.toLowerCase()} to life.
-      </motion.p>
-    </section>
-  );
-  
-
 const ProcessSteps = ({ steps }: { steps: { title: string; description: string }[] }) => (
   <section className="mb-20">
-    <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center text-white font-creepster">Our Process</h2>
+    <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center font-creepster bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Our Process</h2>
     <div className="space-y-12">
       {steps.map((step, index) => (
         <motion.div 
@@ -138,7 +145,7 @@ const ProcessSteps = ({ steps }: { steps: { title: string; description: string }
             {index + 1}
           </div>
           <div>
-            <h3 className="text-2xl font-semibold mb-3 text-gray-100">{step.title}</h3>
+            <h3 className="text-2xl font-semibold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">{step.title}</h3>
             <p className="text-gray-400">{step.description}</p>
           </div>
         </motion.div>
@@ -149,7 +156,7 @@ const ProcessSteps = ({ steps }: { steps: { title: string; description: string }
 
 const Gallery = ({ images }: { images: { src: string; alt: string }[] }) => (
   <section className="mb-20">
-    <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center text-white font-creepster">Gallery</h2>
+    <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center font-creepster bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Gallery</h2>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {images.map((image, index) => (
         <motion.div 
@@ -175,7 +182,7 @@ const Gallery = ({ images }: { images: { src: string; alt: string }[] }) => (
 
 const Testimonials = ({ testimonials }: { testimonials: { name: string; quote: string }[] }) => (
   <section className="mb-20">
-    <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center text-white font-creepster">What Our Clients Say</h2>
+    <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center font-creepster bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">What Our Clients Say</h2>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {testimonials.map((testimonial, index) => (
         <motion.blockquote 
@@ -193,10 +200,9 @@ const Testimonials = ({ testimonials }: { testimonials: { name: string; quote: s
   </section>
 );
 
-
 const CostEstimator = () => {
-  const [roomSize, setRoomSize] = React.useState(100);
-  const [quality, setQuality] = React.useState('standard');
+  const [roomSize, setRoomSize] = useState(100);
+  const [quality, setQuality] = useState('standard');
 
   const calculateCost = () => {
     const baseCost = roomSize * 100;
@@ -206,7 +212,7 @@ const CostEstimator = () => {
 
   return (
     <section className="mb-20">
-      <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center text-white font-creepster">Cost Estimator</h2>
+      <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center font-creepster bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Cost Estimator</h2>
       <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-lg shadow-lg">
         <div className="mb-4">
           <label className="block text-gray-300 mb-2">Room Size (sq ft)</label>
@@ -239,87 +245,91 @@ const CostEstimator = () => {
   );
 };
 
-
-const Benefits = ({ benefits }: { benefits: string[] }) => (
+const Benefits = ({ benefits }: { benefits: string[] }) => {
+  return (
     <section className="mb-20">
-      <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center text-white font-creepster">Benefits of Our Service</h2>
+      <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center font-creepster bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Benefits of Our Service</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {benefits.map((benefit, index) => (
           <motion.div
             key={index}
-            className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-lg shadow-lg"
+            className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-lg shadow-lg relative overflow-hidden group"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
-            <p className="text-lg text-gray-300">
-              <span className="text-purple-400 mr-2">✓</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <p className="text-lg text-gray-300 relative z-10">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mr-2">✓</span>
               {benefit}
             </p>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-0 group-hover:opacity-30 transition duration-300 group-hover:duration-200"></div>
           </motion.div>
         ))}
       </div>
     </section>
   );
-  
-  const ExpandableFAQ = ({ faq }: { faq: { question: string; answer: string }[] }) => {
-    const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-  
-    return (
-      <section className="mb-20">
-        <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center text-white font-creepster">Frequently Asked Questions</h2>
-        <div className="space-y-4">
-          {faq.map((item, index) => (
-            <div key={index} className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg shadow-lg overflow-hidden">
-              <button
-                className="w-full p-6 text-left flex justify-between items-center focus:outline-none"
-                onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
-              >
-                <span className="text-xl font-semibold text-gray-100">{item.question}</span>
-                {expandedIndex === index ? <FaMinus className="text-purple-400" /> : <FaPlus className="text-purple-400" />}
-              </button>
-              <AnimatePresence>
-                {expandedIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="px-6 pb-6"
-                  >
-                    <p className="text-gray-300">{item.answer}</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
-        </div>
-      </section>
-    );
-  };
+};
 
-  const ComparisonTable = ({ comparisonData }: { comparisonData: { feature: string; us: string; others: string }[] }) => (
+const ExpandableFAQ = ({ faq }: { faq: { question: string; answer: string }[] }) => {
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+
+  return (
     <section className="mb-20">
-      <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center text-white font-creepster">How We Compare</h2>
-      <div className="overflow-x-auto">
-        <table className="w-full bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg shadow-lg">
-          <thead>
-            <tr className="bg-gray-700">
-              <th className="p-4 text-left text-white">Feature</th>
-              <th className="p-4 text-left text-white">Us</th>
-              <th className="p-4 text-left text-white">Others</th>
-            </tr>
-          </thead>
-          <tbody>
-            {comparisonData.map((row, index) => (
-              <tr key={index} className="border-b border-gray-700">
-                <td className="p-4 text-gray-300">{row.feature}</td>
-                <td className="p-4 text-purple-400">{row.us}</td>
-                <td className="p-4 text-gray-500">{row.others}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center font-creepster bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Frequently Asked Questions</h2>
+      <div className="space-y-4">
+        {faq.map((item, index) => (
+          <div key={index} className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg shadow-lg overflow-hidden">
+            <button
+              className="w-full p-6 text-left flex justify-between items-center focus:outline-none"
+              onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
+            >
+              <span className="text-xl font-semibold text-gray-100">{item.question}</span>
+              {expandedIndex === index ? <FaMinus className="text-purple-400" /> : <FaPlus className="text-purple-400" />}
+            </button>
+            <AnimatePresence>
+              {expandedIndex === index && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="px-6 pb-6"
+                >
+                  <p className="text-gray-300">{item.answer}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        ))}
       </div>
     </section>
   );
+};
+
+const ComparisonTable = ({ comparisonData }: { comparisonData: { feature: string; us: string; others: string }[] }) => (
+  <section className="mb-20">
+    <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center font-creepster bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">How We Compare</h2>
+    <div className="overflow-x-auto">
+      <table className="w-full bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg shadow-lg">
+        <thead>
+          <tr className="bg-gray-700">
+            <th className="p-4 text-left text-white">Feature</th>
+            <th className="p-4 text-left text-white">Us</th>
+            <th className="p-4 text-left text-white">Others</th>
+          </tr>
+        </thead>
+        <tbody>
+          {comparisonData.map((row, index) => (
+            <tr key={index} className="border-b border-gray-700">
+              <td className="p-4 text-gray-300">{row.feature}</td>
+              <td className="p-4 text-purple-400">{row.us}</td>
+              <td className="p-4 text-gray-500">{row.others}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+);
+

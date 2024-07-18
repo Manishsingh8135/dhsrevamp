@@ -1,20 +1,22 @@
 import { ServiceData } from "./services";
+import { FaHome, FaHardHat, FaDoorOpen, FaUmbrellaBeach, FaTree, FaUtensils, FaPaintRoller, FaWater } from 'react-icons/fa';
 
 export const exteriorData: ServiceData = {
   id: "exterior",
   title: "Exterior Remodeling",
   description: "Transform your home&apos;s exterior to boost curb appeal and create stunning outdoor living spaces.",
-  heroImage: "/assets/exterior/exterior-hero.jpg",
+  heroImage: "/assets/exteriors/exterior1.jpg",
   features: [
-    "Siding replacement and repair",
-    "Roof installation and maintenance",
-    "Window and door upgrades",
-    "Deck and patio construction",
-    "Landscaping design and implementation",
-    "Outdoor kitchen installations",
-    "Exterior painting and finishing",
-    "Gutter system upgrades"
+    { text: "Siding replacement and repair", icon: FaHome },
+    { text: "Roof installation and maintenance", icon: FaHardHat },
+    { text: "Window and door upgrades", icon: FaDoorOpen },
+    { text: "Deck and patio construction", icon: FaUmbrellaBeach },
+    { text: "Landscaping design and implementation", icon: FaTree },
+    { text: "Outdoor kitchen installations", icon: FaUtensils },
+    { text: "Exterior painting and finishing", icon: FaPaintRoller },
+    { text: "Gutter system upgrades", icon: FaWater }
   ],
+  
   processSteps: [
     { title: "Initial Consultation", description: "We assess your home&apos;s exterior and discuss your vision." },
     { title: "Design Development", description: "Our team creates detailed plans for your exterior transformation." },
@@ -23,12 +25,9 @@ export const exteriorData: ServiceData = {
     { title: "Final Inspection", description: "We ensure every aspect of the exterior renovation meets our high standards." }
   ],
   gallery: [
-    { src: "/assets/exterior/exterior1.jpg", alt: "Modern home exterior with new siding" },
-    { src: "/assets/exterior/exterior2.jpg", alt: "Beautiful landscaped front yard" },
-    { src: "/assets/exterior/exterior3.jpg", alt: "Custom-built deck with outdoor kitchen" },
-    { src: "/assets/exterior/exterior4.jpg", alt: "Elegant front entry with new door and windows" },
-    { src: "/assets/exterior/exterior5.jpg", alt: "Revamped roof with solar panels" },
-    { src: "/assets/exterior/exterior6.jpg", alt: "Cozy backyard patio with fire pit" }
+    { src: "/assets/exteriors/exterior1.jpg", alt: "Modern home exterior with new siding" },
+    { src: "/assets/exteriors/exterior2.jpg", alt: "Beautiful landscaped front yard" },
+    
   ],
   testimonials: [
     { name: "Alex M.", quote: "DHS REVAMP completely transformed the look of our home. The new siding and landscaping have made such a difference!" },
