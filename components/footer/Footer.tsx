@@ -3,10 +3,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
+type LinkItem = {
+  text: string;
+  href: string;
+};
+
 // Company Information
 const companyInfo = {
   name: "DHS REVAMP",
-  logo: "/assets/hero/hero1.jpg",
+  logo: "/assets/logo/dhslogo1.png",
   description: "Transforming homes across the US with our expert revamp services. We bring your vision to life.",
   socialMedia: [
     { icon: FaFacebookF, link: "https://www.facebook.com/dhsrevamp" },
@@ -18,14 +23,17 @@ const companyInfo = {
 
 // Services
 const services = [
-  'Kitchen', 'Bathroom', 'Exterior', 'Interior', 'Sunrooms', 'Additions'
+  'Kitchen', 'Bathroom', 'Exterior', 'Interior'
 ];
 
 // Quick Links
+// Quick Links
 const quickLinks = [
-  'Home', 'About', 'Services', 'Projects', 'Contact'
+  { text: 'Home', href: '/' },
+  { text: 'Services', href: '#services' },
+  // { text: 'Projects', href: '/projects' },
+  { text: 'Contact', href: '/contact' }
 ];
-
 // Contact Information
 const contactInfo = {
   address: "Los Angeles, Orange County, Riverside 7581 Silver St. Buena Park, CA",
@@ -54,7 +62,7 @@ const Footer: React.FC = () => {
 const CompanySection: React.FC<{ info: typeof companyInfo }> = ({ info }) => (
   <div className="space-y-6">
     <div className="flex items-center space-x-4">
-      <Image src={info.logo} alt={`${info.name} Logo`} width={60} height={60} className="rounded-full" />
+      <Image src={info.logo} alt={`${info.name} Logo`} width={80} height={80} className="rounded-full" />
       <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
         {info.name}
       </h2>
@@ -93,16 +101,16 @@ const ServicesSection: React.FC<{ services: string[] }> = ({ services }) => (
 );
 
 // Quick Links Section Component
-const QuickLinksSection: React.FC<{ links: string[] }> = ({ links }) => (
+const QuickLinksSection: React.FC<{ links: LinkItem[] }> = ({ links }) => (
   <div>
     <h3 className="text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-6 border-b-2 border-pink-500 pb-2 inline-block">
       Quick Links
     </h3>
     <ul className="space-y-3">
-      {links.map((link) => (
-        <li key={link}>
-          <Link href={`/${link.toLowerCase()}`} className="hover:text-pink-400 transition-colors duration-300 ease-in-out flex items-center font-serif italic">
-            <span className="mr-2">•</span> {link}
+      {links.map((link, index) => (
+        <li key={index}>
+          <Link href={link.href} className="hover:text-pink-400 transition-colors duration-300 ease-in-out flex items-center font-serif italic">
+            <span className="mr-2">•</span> {link.text}
           </Link>
         </li>
       ))}
@@ -137,7 +145,7 @@ const ContactSection: React.FC<{ info: typeof contactInfo }> = ({ info }) => (
 const CopyrightSection: React.FC = () => (
   <div className="bg-black bg-opacity-50 py-6">
     <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-      <p className="font-serif italic">© 2024 DHS REVAMP. All rights reserved.</p>
+      <p className="font-serif italic">© 2024 DHS CONSTRUCTION GROUP INC. All rights reserved.</p>
       <p className="mt-2 md:mt-0 font-serif italic">
         Proudly serving homeowners across the United States
       </p>
