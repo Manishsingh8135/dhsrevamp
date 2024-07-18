@@ -15,7 +15,7 @@ export function TextRevealCardPreview() {
                 className="border border-purple-500/20"
             >
                 <TextRevealCardTitle className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-                    Expert Renovation Services Nationwide
+                    Expert Renovation Services in LOS ANGELES
                 </TextRevealCardTitle>
                 <TextRevealCardDescription className="text-gray-300 font-serif italic">
                     DHS REVAMP specializes in transforming kitchens, bedrooms, bathrooms, and more. Elevate your home with our professional revamp solutions.
