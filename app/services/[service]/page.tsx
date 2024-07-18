@@ -124,7 +124,7 @@ const ServiceIntro = ({ data }: { data: ServiceData }) => (
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.4 }}
     >
-      Our approach goes beyond the conventional, aiming to create {data.title.toLowerCase()} that are both stylish and highly functional. Whether you're envisioning a modern haven or a classic, timeless space, our team of experts collaborates with you to bring your dream {data.title.toLowerCase()} to life.
+      Our approach goes beyond the conventional, aiming to create {data.title.toLowerCase()} that are both stylish and highly functional. Whether you&#39;re envisioning a modern haven or a classic, timeless space, our team of experts collaborates with you to bring your dream {data.title.toLowerCase()} to life.
     </motion.p>
   </section>
 );
@@ -179,7 +179,6 @@ const Gallery = ({ images }: { images: { src: string; alt: string }[] }) => (
     </div>
   </section>
 );
-
 const Testimonials = ({ testimonials }: { testimonials: { name: string; quote: string }[] }) => (
   <section className="mb-20">
     <h2 className="text-4xl md:text-5xl font-bold mb-10 text-center font-creepster bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">What Our Clients Say</h2>
@@ -192,7 +191,7 @@ const Testimonials = ({ testimonials }: { testimonials: { name: string; quote: s
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: index * 0.2 }}
         >
-          <p className="mb-4 italic text-lg text-gray-300">"{testimonial.quote}"</p>
+          <p className="mb-4 italic text-lg text-gray-300">&ldquo;{testimonial.quote}&rdquo;</p>
           <footer className="font-semibold text-gray-400">- {testimonial.name}</footer>
         </motion.blockquote>
       ))}
@@ -271,7 +270,6 @@ const Benefits = ({ benefits }: { benefits: string[] }) => {
   );
 };
 
-
 const ExpandableFAQ = ({ faq }: { faq: { question: string; answer: string }[] }) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
@@ -333,4 +331,3 @@ const ComparisonTable = ({ comparisonData }: { comparisonData: { feature: string
     </div>
   </section>
 );
-
