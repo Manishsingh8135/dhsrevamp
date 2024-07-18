@@ -271,6 +271,7 @@ const Benefits = ({ benefits }: { benefits: string[] }) => {
   );
 };
 
+
 const ExpandableFAQ = ({ faq }: { faq: { question: string; answer: string }[] }) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
