@@ -1,15 +1,10 @@
 import type { Config } from "tailwindcss"
 const defaultTheme = require("tailwindcss/defaultTheme");
-
 const svgToDataUri = require("mini-svg-data-uri");
-
 const colors = require("tailwindcss/colors");
-
-
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
-
 
 const config = {
   darkMode: ["class"],
@@ -63,6 +58,13 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // New service page colors
+        'service-primary': 'var(--color-primary)',
+        'service-secondary': 'var(--color-secondary)',
+        'service-accent': 'var(--color-accent)',
+        'service-background': 'var(--color-background)',
+        'service-text': 'var(--color-text)',
+        'service-muted': 'var(--color-muted)',
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -83,6 +85,10 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      fontFamily: {
+        sans: ['var(--font-inter)', 'sans-serif'],
+        creepster: ['var(--font-creepster)', 'cursive'],
+      },
     },
   },
   plugins: [require("tailwindcss-animate"), addVariablesForColors, newBackgroundFunction],
@@ -99,7 +105,6 @@ function addVariablesForColors({ addBase, theme }: any) {
     ":root": newVars,
   });
 }
-
 
 function newBackgroundFunction({ matchUtilities, theme }: any) {
   matchUtilities(
