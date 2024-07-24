@@ -5,6 +5,7 @@ import { OrbitControls, PerspectiveCamera, Text, useTexture, Environment, Box } 
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing'
 import * as THREE from 'three'
+import { OrbitControls as OrbitControlsImpl } from 'three/examples/jsm/controls/OrbitControls'
 
 interface HouseProps {
   initialRotation: [number, number, number];
@@ -123,7 +124,7 @@ interface CameraControllerProps {
 
 function CameraController({ target, onTargetChange }: CameraControllerProps) {
   const { camera } = useThree();
-  const controlsRef = useRef<OrbitControls | null>(null);
+  const controlsRef = useRef<OrbitControlsImpl>(null);
 
   useFrame(() => {
     if (controlsRef.current) {
