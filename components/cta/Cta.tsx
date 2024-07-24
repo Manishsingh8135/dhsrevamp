@@ -11,7 +11,7 @@ const CTASection = () => {
       <motion.div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('/cta-background.jpg')",
+          backgroundImage: "url('/assets/hero/hero1.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           y
