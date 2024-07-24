@@ -201,7 +201,7 @@ export default function AdvancedHero3D({
         />
         <EffectComposer>
           <Bloom luminanceThreshold={0.5} luminanceSmoothing={0.9} height={300} />
-          <ChromaticAberration offset={[0.0005, 0.0005]} />
+          <ChromaticAberration offset={new THREE.Vector2(0.0005, 0.0005)} />
         </EffectComposer>
       </Canvas>
       <div className="absolute inset-x-0 bottom-10 text-center text-white">
