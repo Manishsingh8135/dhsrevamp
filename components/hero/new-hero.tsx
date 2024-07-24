@@ -123,7 +123,7 @@ interface CameraControllerProps {
 
 function CameraController({ target, onTargetChange }: CameraControllerProps) {
   const { camera } = useThree();
-  const controlsRef = useRef<OrbitControls>(null);
+  const controlsRef = useRef<typeof OrbitControls>(null);
 
   useFrame(() => {
     if (controlsRef.current) {
@@ -134,8 +134,6 @@ function CameraController({ target, onTargetChange }: CameraControllerProps) {
 
   return <OrbitControls ref={controlsRef} camera={camera} target={new THREE.Vector3(...target)} />;
 }
-
-
 
 interface SceneProps {
   logoPath: string | null;
