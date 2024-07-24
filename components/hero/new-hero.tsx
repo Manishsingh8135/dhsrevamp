@@ -204,14 +204,14 @@ export default function AdvancedHero3D({
           <ChromaticAberration 
             offset={new THREE.Vector2(0.0005, 0.0005)} 
             radialModulation={true}
-            modulationOffset={new THREE.Vector2(0.0, 0.0)} 
+            modulationOffset={0.0} 
           />
         </EffectComposer>
       </Canvas>
       <div className="absolute inset-x-0 bottom-10 text-center text-white">
         <h1 className="text-6xl font-extrabold mb-4">DHS CONSTRUCTION GROUP INC</h1>
         <p className="text-2xl font-bold mb-6">Your Vision, Our Expertise</p>
-        <button className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xl font-bold rounded-full hover:bg-yellow-400 transition-colors transform hover:scale-105">
+        <button className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xl font-bold rounded-full hover:bg-yellow-400 transition-colors transform hover:scale-105 z-10 mb-12">
           Get Started
         </button>
       </div>
