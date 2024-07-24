@@ -123,7 +123,7 @@ interface CameraControllerProps {
 
 function CameraController({ target, onTargetChange }: CameraControllerProps) {
   const { camera } = useThree();
-  const controlsRef = useRef<InstanceType<typeof OrbitControls> | null>(null);
+  const controlsRef = useRef<OrbitControls | null>(null);
 
   useFrame(() => {
     if (controlsRef.current) {
