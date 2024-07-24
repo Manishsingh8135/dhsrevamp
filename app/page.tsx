@@ -17,7 +17,7 @@ export default function Home() {
       <AdvancedHero3D 
       logoPath={""}
       initialCameraPosition={[0.9717728919512081, 0.41480069283742743, 3.2363700475392227]}
-      initialRotation={[-2.6593545396871683, -0.17558357267414257, -3.050406980491143]}
+      initialRotation={[-2.6593545396871683, -0.17558357267414258, -3.050406980491143]}
         orbitControlsTarget={[0, 0, 0]}
         textPosition={[0, 2, 5]}
         />
