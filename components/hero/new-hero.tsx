@@ -1,7 +1,7 @@
 "use client"
-import React, { Suspense, useRef, useMemo, useState, useEffect } from 'react'
+import React, { Suspense, useRef, useMemo } from 'react'
 import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
-import { OrbitControls, PerspectiveCamera, Text, useTexture, Environment } from '@react-three/drei'
+import { OrbitControls, PerspectiveCamera, Text, useTexture, Environment, Box } from '@react-three/drei'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing'
 import * as THREE from 'three'
@@ -41,18 +41,15 @@ interface LogoProps {
 }
 
 function Logo({ logoPath }: LogoProps) {
-    // Use a default or placeholder texture when logoPath is null
-    const texture = useTexture(logoPath ?? '/assets/hero/hero1.jpg');
+  const texture = useTexture(logoPath ?? '/assets/hero/hero1.jpg');
   
-    // Conditionally render the mesh only if logoPath is not null
-    return logoPath ? (
-      <mesh position={[0, 5, 0]}>
-        <planeGeometry args={[3, 1]} />
-        <meshBasicMaterial map={texture} transparent={true} />
-      </mesh>
-    ) : null;
-  }
-  
+  return logoPath ? (
+    <mesh position={[0, 5, 0]}>
+      <planeGeometry args={[3, 1]} />
+      <meshBasicMaterial map={texture} transparent={true} />
+    </mesh>
+  ) : null;
+}
 
 interface AnimatedTextProps {
   position: [number, number, number];
@@ -86,20 +83,37 @@ function AnimatedText({ position = [0, 2, 0], fontSize = 0.5 }: AnimatedTextProp
   )
 }
 
-function CameraLogger() {
-  const { camera } = useThree()
-  
-  useEffect(() => {
-    const logCameraPosition = () => {
-      console.log('Camera Position:', camera.position)
-      console.log('Camera Rotation:', camera.rotation)
-    }
-    
-    window.addEventListener('mouseup', logCameraPosition)
-    return () => window.removeEventListener('mouseup', logCameraPosition)
-  }, [camera])
+function LoadingAnimation() {
+  const boxRef = useRef<THREE.Mesh>(null)
 
-  return null
+  useFrame((state) => {
+    if (boxRef.current) {
+      boxRef.current.rotation.x = Math.sin(state.clock.getElapsedTime())
+      boxRef.current.rotation.y = Math.cos(state.clock.getElapsedTime() * 0.5)
+    }
+  })
+
+  return (
+    <group>
+      <Box ref={boxRef} args={[1, 1, 1]}>
+        <meshNormalMaterial />
+      </Box>
+      <Text
+        position={[0, -2, 0]}
+        color="white"
+        fontSize={0.5}
+        maxWidth={200}
+        lineHeight={1}
+        letterSpacing={0.02}
+        textAlign="center"
+        font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
+        anchorX="center"
+        anchorY="middle"
+      >
+        Loading...
+      </Text>
+    </group>
+  )
 }
 
 interface CameraControllerProps {
@@ -108,17 +122,17 @@ interface CameraControllerProps {
 }
 
 function CameraController({ target, onTargetChange }: CameraControllerProps) {
-  const { camera } = useThree()
-  const controlsRef = useRef<OrbitControls>(null)
+  const { camera } = useThree();
+  const controlsRef = useRef<InstanceType<typeof OrbitControls> | null>(null);
 
   useFrame(() => {
     if (controlsRef.current) {
-      controlsRef.current.update()
-      onTargetChange(controlsRef.current.target)
+      controlsRef.current.update();
+      onTargetChange(controlsRef.current.target);
     }
-  })
+  });
 
-  return <OrbitControls ref={controlsRef} camera={camera} target={new THREE.Vector3(...target)} />
+  return <OrbitControls ref={controlsRef} camera={camera} target={new THREE.Vector3(...target)} />;
 }
 
 interface SceneProps {
@@ -131,16 +145,8 @@ interface SceneProps {
 }
 
 function Scene({ logoPath, initialCameraPosition, initialRotation, orbitControlsTarget, textPosition, textSize }: SceneProps) {
-  const [currentTarget, setCurrentTarget] = useState(orbitControlsTarget)
-  const [currentRotation, setCurrentRotation] = useState(initialRotation)
-
-  useEffect(() => {
-    console.log('Orbit Controls Target:', currentTarget)
-  }, [currentTarget])
-
-  useEffect(() => {
-    console.log('House Rotation:', currentRotation)
-  }, [currentRotation])
+  const setCurrentTarget = (target: THREE.Vector3) => {}
+  const setCurrentRotation = (rotation: THREE.Euler) => {}
 
   return (
     <>
@@ -149,11 +155,10 @@ function Scene({ logoPath, initialCameraPosition, initialRotation, orbitControls
         target={orbitControlsTarget} 
         onTargetChange={setCurrentTarget}
       />
-      <CameraLogger />
       <ambientLight intensity={0.5} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
       <pointLight position={[-10, -10, -10]} />
-      <Suspense fallback={<Text color="white" anchorX="center" anchorY="middle">Loading...</Text>}>
+      <Suspense fallback={<LoadingAnimation />}>
         <House 
           initialRotation={initialRotation} 
           onRotationChange={setCurrentRotation}
