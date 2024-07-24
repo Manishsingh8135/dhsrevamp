@@ -41,16 +41,18 @@ interface LogoProps {
 }
 
 function Logo({ logoPath }: LogoProps) {
-  if (!logoPath) return null;
-
-  const texture = useTexture(logoPath);
-  return (
-    <mesh position={[0, 5, 0]}>
-      <planeGeometry args={[3, 1]} />
-      <meshBasicMaterial map={texture} transparent={true} />
-    </mesh>
-  );
-}
+    // Use a default or placeholder texture when logoPath is null
+    const texture = useTexture(logoPath ?? '/assets/hero/hero1.jpg');
+  
+    // Conditionally render the mesh only if logoPath is not null
+    return logoPath ? (
+      <mesh position={[0, 5, 0]}>
+        <planeGeometry args={[3, 1]} />
+        <meshBasicMaterial map={texture} transparent={true} />
+      </mesh>
+    ) : null;
+  }
+  
 
 interface AnimatedTextProps {
   position: [number, number, number];
